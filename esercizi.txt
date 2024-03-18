@@ -1,0 +1,28 @@
+ESERCIZIO 1:
+	SELECT * FROM customers WHERE firstname = 'Mario'
+
+ESERCIZIO 2:
+	SELECT firstname, lastname FROM customers WHERE birthyear = 1982
+	
+ESERCIZIO 3:
+	SELECT invoice_id FROM invoices WHERE vat = 20
+
+ESERCIZIO 4:
+	SELECT * FROM products WHERE EXTRACT(YEAR FROM activation_date) = '2017'
+		AND (is_being_sold = true OR is_being_produced = true)
+
+ESERCIZIO 5:
+	SELECT * FROM invoices i
+		JOIN customers c ON c.customer_id = i.customer_id
+		WHERE amount < 1000
+
+ESERCIZIO 6:
+	SELECT i.*, s.name FROM invoices i JOIN suppliers s ON i.supplier_id = s.supplier_id
+
+ESERCIZIO 7:
+	SELECT invoice_id, EXTRACT(YEAR FROM invoice_date) FROM invoices
+		ORDER BY EXTRACT(YEAR FROM invoice_date)
+
+ESERCIZIO 8:
+	SELECT EXTRACT(YEAR FROM invoice_date), COUNT(*), SUM(amount) FROM invoices
+		GROUP BY EXTRACT(YEAR FROM invoice_date)
